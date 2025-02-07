@@ -13,4 +13,32 @@ def is_palindrome(nbr: int) -> bool:
             return False
     return True
 
-print(is_palindrome(121))
+# longest comon prefix in an array of string
+def longest_common_prefix(strs: list[str]) -> str:
+    new_strs: list = sorted(strs)
+    min_str: str = new_strs[0]
+    common_prefix: str = ""
+    for i in range(len(min_str)):
+        if has_all(min_str[i], i, new_strs[1:]):
+            common_prefix += min_str[i]
+        else:
+            return common_prefix
+    return common_prefix
+
+def has_all(chrs: str, i: int, strs: list) -> bool:
+    has: bool = True
+    for st in strs:
+        if st[i] != chrs:
+            has = False
+    return has
+
+
+
+
+
+def main():
+    strs: list[str] = ["dog","racecar","car"]
+    print(longest_common_prefix(strs))
+
+if __name__ == "__main__":
+    main()
