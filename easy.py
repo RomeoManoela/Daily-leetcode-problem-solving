@@ -1,4 +1,7 @@
 # check palindrome
+from collections import deque
+
+
 def is_palindrome(nbr: int) -> bool:
     lst: list[int] = [int(digit) for digit in str(nbr)]
     if nbr < 0:
@@ -32,13 +35,31 @@ def has_all(chrs: str, i: int, strs: list) -> bool:
             has = False
     return has
 
+# valid parentheses
+def is_valid(s: str) -> bool:
+    if len(s) <= 1:
+        return False
+    dq: deque = deque()
+    for char in s:
+        print(dq, char)
+        if char in ['(', '{', '[' ]:
+            dq.append(char)
+        elif char == ')':
+            if len(dq) == 0 or dq.pop() != '(':
+                return False
+        elif char == ']':
+            if len(dq) == 0 or dq.pop() != '[':
+                return False
+        elif char == '}':
+            if len(dq) == 0 or dq.pop() != '{':
+                return False
+    return len(dq) == 0
 
 
 
 
 def main():
-    strs: list[str] = ["dog","racecar","car"]
-    print(longest_common_prefix(strs))
+    print(is_valid('()[]{}'))
 
 if __name__ == "__main__":
     main()
