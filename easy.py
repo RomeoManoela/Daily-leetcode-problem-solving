@@ -89,12 +89,25 @@ def remove_duplicates(self, nums: list[int]) -> int:
             i += 1
             nums[i] = nums[j]
     return i + 1
+# remove element in an array
+def remove_element( nums: list[int], val: int) -> int:
+    result: list[int] = []
+    i: int = 0
+    for num in nums:
+        if num != val:
+            result.append(num)
+            i = i + 1
+    nums[:] = result
+    return i
 
 
 
 
 def main():
-    print(is_valid('()[]{}'))
+    ns = [0, 1, 4, 3, 2, 2, 1]
+    print(ns)
+    print(remove_element(ns, 1))
+    print(ns)
 
 if __name__ == "__main__":
     main()
