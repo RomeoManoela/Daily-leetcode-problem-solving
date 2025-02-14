@@ -111,12 +111,9 @@ def str_str(haystack: str, needle: str) -> int:
             return i
 
 
-
-
-
 def main():
-    haystack = "bbbbababbbaabbba"
-    needle = "abb"
+    haystack = "hello"
+    needle = "ll"
     print(str_str(haystack, needle))
 
 if __name__ == "__main__":
