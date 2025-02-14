@@ -100,14 +100,24 @@ def remove_element( nums: list[int], val: int) -> int:
     nums[:] = result
     return i
 
+# index of the first occurrence of str2 in str1
+def str_str(haystack: str, needle: str) -> int:
+    if not needle in haystack:
+        return -1
+
+    for i in range(len(haystack) - len(needle) + 1):
+        print(haystack[i:i+len(needle)], i)
+        if haystack[i:i + len(needle)] == needle:
+            return i
+
+
 
 
 
 def main():
-    ns = [0, 1, 4, 3, 2, 2, 1]
-    print(ns)
-    print(remove_element(ns, 1))
-    print(ns)
+    haystack = "bbbbababbbaabbba"
+    needle = "abb"
+    print(str_str(haystack, needle))
 
 if __name__ == "__main__":
     main()
