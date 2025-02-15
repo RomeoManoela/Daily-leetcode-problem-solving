@@ -110,11 +110,24 @@ def str_str(haystack: str, needle: str) -> int:
         if haystack[i:i + len(needle)] == needle:
             return i
 
+# search insert position
+def search_insert(nums: list[int], target: int) -> int:
+    left, right = 0, len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return left
+
 
 def main():
-    haystack = "hello"
-    needle = "ll"
-    print(str_str(haystack, needle))
+    print(search_insert([1,3,5,6],2 ))
 
 if __name__ == "__main__":
     main()
