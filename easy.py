@@ -156,9 +156,34 @@ def plus_one(digits: list[int]) -> list[int]:
     return [1] + digits
 
 
+# Add binary
+def add_binary(a: str, b: str) -> str:
+    a = int("0b" + a, 2)
+    b = int("0b" + b, 2)
+    res = bin(a + b)
+    return res[2:]
+
+
+# sqrt(x)
+
+
+def my_sqrt(x: int) -> int:
+    if x == 0:
+        return 0
+    left, right = 1, x
+    while left <= right:
+        mid = (left + right) // 2
+        if mid * mid == x:
+            return mid
+        elif mid * mid < x:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return right
+
+
 def main():
-    print(length_of_last_word("romeo  manoela     zadd  "))
-    print(plus_one([9]))
+    print(my_sqrt(23))
 
 
 if __name__ == "__main__":
