@@ -165,8 +165,6 @@ def add_binary(a: str, b: str) -> str:
 
 
 # sqrt(x)
-
-
 def my_sqrt(x: int) -> int:
     if x == 0:
         return 0
@@ -182,8 +180,20 @@ def my_sqrt(x: int) -> int:
     return right
 
 
+# climbStairs: it took me 1h to solve,
+# I didn't realise that the problem is fibonacci sequence
+def climb_stairs(n: int) -> int:
+    if n == 1:
+        return 1
+    prev1, prev2 = 1, 2
+    for _ in range(3, n + 1):
+        current = prev1 + prev2
+        prev1, prev2 = prev2, current
+    return prev2
+
+
 def main():
-    print(my_sqrt(23))
+    print(climb_stairs(5))
 
 
 if __name__ == "__main__":
