@@ -1,5 +1,12 @@
 # check palindrome
 from collections import deque
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
 def is_palindrome(nbr: int) -> bool:
@@ -59,12 +66,6 @@ def is_valid(s: str) -> bool:
     return len(dq) == 0
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
 # Merge two sorted list
 def merge_two_sorted_list(list1: ListNode, list2: ListNode) -> ListNode:
     dummy = ListNode()
@@ -111,7 +112,7 @@ def remove_element(nums: list[int], val: int) -> int:
 
 
 # index of the first occurrence of str2 in str1
-def str_str(haystack: str, needle: str) -> int:
+def str_str(haystack: str, needle: str) -> int | None:
     if not needle in haystack:
         return -1
 
@@ -192,8 +193,38 @@ def climb_stairs(n: int) -> int:
     return prev2
 
 
+# remove duplicate from a sorted list
+def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
+    unique: set[int] = set()
+    current: ListNode = head
+    while current:
+        if current.val not in unique:
+            unique.add(current.val)
+        else:
+            before = current
+
+
+def merge(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+    last = m + n - 1
+    m = m - 1
+    n = n - 1
+
+    while n >= 0:
+        if m >= 0 and nums1[m] > nums2[n]:
+            nums1[last] = nums1[m]
+            m -= 1
+        else:
+            nums1[last] = nums2[n]
+            n -= 1
+        last -= 1
+
+
 def main():
-    print(climb_stairs(5))
+    # Test
+    nums1 = [4, 5, 6, 0, 0, 0]
+    nums2 = [1, 2, 3]
+    merge(nums1, 3, nums2, 3)
+    print("Résultat final:", nums1)  # [1,2,3,4,5,6]
 
 
 if __name__ == "__main__":
