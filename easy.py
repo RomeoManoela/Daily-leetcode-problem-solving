@@ -51,7 +51,6 @@ def is_valid(s: str) -> bool:
         return False
     dq: deque = deque()
     for char in s:
-        print(dq, char)
         if char in ["(", "{", "["]:
             dq.append(char)
         elif char == ")":
@@ -204,6 +203,7 @@ def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
             before = current
 
 
+# merge sorted list
 def merge(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
     last = m + n - 1
     m = m - 1
@@ -217,6 +217,30 @@ def merge(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
             nums1[last] = nums2[n]
             n -= 1
         last -= 1
+
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+# traverse a binary search tree from left to right
+def inorder_traversal(root: Optional[TreeNode]) -> list[int]:
+    result: list[int] = []
+
+    def dfs(node: Optional[TreeNode]) -> None:
+        if not node:
+            return
+
+        dfs(node.left)
+        result.append(node.val)
+        dfs(node.right)
+
+    dfs(root)
+    return result
 
 
 def main():
