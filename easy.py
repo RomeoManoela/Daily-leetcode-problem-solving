@@ -10,15 +10,12 @@ class ListNode:
 
 
 def is_palindrome(nbr: int) -> bool:
-    lst: list[int] = [int(digit) for digit in str(nbr)]
     if nbr < 0:
         return False
-    if len(lst) == 1:
-        return True
-    for i in range(len(lst) // 2):
-        first = lst[i]
-        last = lst[-i - 1]
-        print(first, last)
+    str_nbr: str = str(nbr)  # convert int to str
+    for i in range(len(str_nbr) // 2):
+        first = str_nbr[i]
+        last = str_nbr[-i - 1]
         if first != last:
             return False
     return True
