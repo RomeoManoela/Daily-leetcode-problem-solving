@@ -83,7 +83,7 @@ def merge_two_sorted_list(list1: ListNode, list2: ListNode) -> ListNode:
     return dummy.next
 
 
-# remove duplicate from sorted list
+# remove duplicate from a sorted list
 def remove_duplicates(self, nums: list[int]) -> int:
     if not nums:
         return 0
@@ -95,7 +95,7 @@ def remove_duplicates(self, nums: list[int]) -> int:
     return i + 1
 
 
-# remove element in an array
+# remove an element in an array
 def remove_element(nums: list[int], val: int) -> int:
     result: list[int] = []
     i: int = 0
@@ -178,7 +178,7 @@ def my_sqrt(x: int) -> int:
 
 
 # climbStairs: it took me 1h to solve,
-# I didn't realise that the problem is fibonacci sequence
+# I didn't realize that the problem is a fibonacci sequence
 def climb_stairs(n: int) -> int:
     if n == 1:
         return 1
@@ -240,12 +240,23 @@ def inorder_traversal(root: Optional[TreeNode]) -> list[int]:
     return result
 
 
-def main():
-    # Test
-    nums1 = [4, 5, 6, 0, 0, 0]
-    nums2 = [1, 2, 3]
-    merge(nums1, 3, nums2, 3)
-    print("Résultat final:", nums1)  # [1,2,3,4,5,6]
+def is_symmetric(root: Optional[TreeNode]) -> bool:
+    if not root:
+        return True
+
+    def is_mirror(left: Optional[TreeNode], right: Optional[TreeNode]) -> bool:
+        if not left and not right:
+            return True
+        if not left or not right:
+            return False
+        if left.val != right.val:
+            return False
+        return is_mirror(left.left, right.right) and is_mirror(left.right, right.left)
+
+    return is_mirror(root.left, root.right)
+
+
+def main(): ...
 
 
 if __name__ == "__main__":
