@@ -262,6 +262,21 @@ def max_depth(self, root: Optional[TreeNode]) -> int:
     return 1 + max(self.max_depth(root.left), self.max_depth(root.right))
 
 
+# sorted array to BST
+def sorted_array_to_bst(nums: list[int]) -> Optional[TreeNode]:
+    def helper(left, right):
+        if left > right:
+            return None
+
+        mid = (left + right) // 2
+        root = TreeNode(nums[mid])
+        root.left = helper(left, mid - 1)
+        root.right = helper(mid + 1, right)
+        return root
+
+    return helper(0, len(nums) - 1)
+
+
 def main(): ...
 
 
