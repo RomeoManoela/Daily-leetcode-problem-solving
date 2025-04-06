@@ -277,7 +277,23 @@ def sorted_array_to_bst(nums: list[int]) -> Optional[TreeNode]:
     return helper(0, len(nums) - 1)
 
 
-def main(): ...
+def pascal_triangle(n: int) -> list[list[int]]:
+    if n == 0:
+        return []
+    result: list[list[int]] = [[1]]
+    for i in range(1, n):
+        prev: list[int] = result[-1]
+        tmp: list[int] = [1]
+        for j in range(len(prev) - 1):
+            tmp.append(prev[j] + prev[j + 1])
+        tmp.append(1)
+        result.append(tmp)
+    return result
+
+
+def main():
+    print(pascal_triangle(4))
+    print(pascal_row(4))
 
 
 if __name__ == "__main__":
