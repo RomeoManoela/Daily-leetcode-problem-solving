@@ -293,7 +293,6 @@ def pascal_triangle(n: int) -> list[list[int]]:
 
 def main():
     print(pascal_triangle(4))
-    print(pascal_row(4))
 
 
 if __name__ == "__main__":
