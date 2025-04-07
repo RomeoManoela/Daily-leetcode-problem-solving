@@ -291,8 +291,15 @@ def pascal_triangle(n: int) -> list[list[int]]:
     return result
 
 
+def single_number(nums: list[int]) -> int | None:
+    res: int = 0
+    for n in nums:
+        res ^= n
+    return res
+
+
 def main():
-    print(pascal_triangle(4))
+    print(single_number([1, 2, 3, 3, 1]))
 
 
 if __name__ == "__main__":
