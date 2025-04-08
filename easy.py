@@ -1,6 +1,7 @@
-# check palindrome
+import math
 from collections import deque
 from typing import Optional
+from math import factorial as fct
 
 
 class ListNode:
@@ -298,8 +299,19 @@ def single_number(nums: list[int]) -> int | None:
     return res
 
 
+def pascal_triangle_2(row_index: int) -> list[int]:
+    result: list[int] = [1]
+    if row_index == 0:
+        return result
+    for r in range(1, row_index + 1):
+        result.append(result[-1] * (row_index - r + 1) // r)
+    return result
+
+
 def main():
-    print(single_number([1, 2, 3, 3, 1]))
+    print(pascal_triangle(6))
+    print(pascal_triangle_2(5))
+    print(pascal_triangle_2(4))
 
 
 if __name__ == "__main__":
