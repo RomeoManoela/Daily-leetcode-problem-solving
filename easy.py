@@ -308,6 +308,22 @@ def pascal_triangle_2(row_index: int) -> list[int]:
     return result
 
 
+def is_valid_palindrome(s: str) -> bool:
+    s = "".join(filter(str.isalnum, s)).lower()
+    return s == s[::-1]
+
+
+def max_profit_buy_sell(self, prices: list[int]) -> int:
+    min_price = float("inf")
+    max_profit = 0
+    for price in prices:
+        if price < min_price:
+            min_price = price
+        elif price - min_price > max_profit:
+            max_profit = price - min_price
+    return max_profit
+
+
 def main():
     print(pascal_triangle(6))
     print(pascal_triangle_2(5))
