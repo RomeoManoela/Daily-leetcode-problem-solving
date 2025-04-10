@@ -313,7 +313,7 @@ def is_valid_palindrome(s: str) -> bool:
     return s == s[::-1]
 
 
-def max_profit_buy_sell(self, prices: list[int]) -> int:
+def max_profit_buy_sell(prices: list[int]) -> int:
     min_price = float("inf")
     max_profit = 0
     for price in prices:
@@ -325,9 +325,7 @@ def max_profit_buy_sell(self, prices: list[int]) -> int:
 
 
 def main():
-    print(pascal_triangle(6))
-    print(pascal_triangle_2(5))
-    print(pascal_triangle_2(4))
+    print((max_profit_buy_sell([2, 1, 4, 6, 3])))
 
 
 if __name__ == "__main__":
