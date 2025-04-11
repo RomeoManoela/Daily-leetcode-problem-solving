@@ -324,6 +324,16 @@ def max_profit_buy_sell(prices: list[int]) -> int:
     return max_profit
 
 
+def has_cycle(head: Optional[ListNode]) -> bool:
+    slow, fast = head, head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+
+
 def main():
     print((max_profit_buy_sell([2, 1, 4, 6, 3])))
 
