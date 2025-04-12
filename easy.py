@@ -334,6 +334,20 @@ def has_cycle(head: Optional[ListNode]) -> bool:
     return False
 
 
+def preorder_traversal(root: Optional[TreeNode]) -> list[int]:
+    res = []
+
+    def func(r):
+        if r is None:
+            return
+        res.append(r.val)
+        func(r.left)
+        func(r.right)
+
+    func(root)
+    return res
+
+
 def main():
     print((max_profit_buy_sell([2, 1, 4, 6, 3])))
 
