@@ -348,6 +348,20 @@ def preorder_traversal(root: Optional[TreeNode]) -> list[int]:
     return res
 
 
+def postorder_traversal(root: Optional[TreeNode]) -> list[int]:
+    res = []
+
+    def func(r):
+        if r is None:
+            return
+        func(r.left)
+        func(r.right)
+        res.append(r.val)
+
+    func(root)
+    return res
+
+
 def main():
     print((max_profit_buy_sell([2, 1, 4, 6, 3])))
 
