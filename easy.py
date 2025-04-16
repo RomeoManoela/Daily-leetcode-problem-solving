@@ -362,8 +362,25 @@ def postorder_traversal(root: Optional[TreeNode]) -> list[int]:
     return res
 
 
+def majority_element(nums: list[int]) -> int:
+    # Algorithme de Boyer-Moore Voting
+    candidate = None
+    count = 0
+
+    for num in nums:
+        if count == 0:
+            candidate = num
+            count = 1
+        elif num == candidate:
+            count += 1
+        else:
+            count -= 1
+
+    return candidate
+
+
 def main():
-    print((max_profit_buy_sell([2, 1, 4, 6, 3])))
+    print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
 
 
 if __name__ == "__main__":
