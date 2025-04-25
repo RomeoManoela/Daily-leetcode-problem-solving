@@ -17,6 +17,7 @@ def generate_parenthesis(n: int) -> list[str]:
     backtrack("", 0, 0)
     return result
 
+
 def sort_list(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
     if not head or not head.next:
@@ -50,6 +51,23 @@ def merge_ll(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNod
         tail = tail.next
 
     tail.next = l1 if l1 else l2
+    return dummy.next
+
+
+def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode] | None:
+    dummy: ListNode = ListNode(0, head)
+    fast: ListNode | None = dummy
+    for i in range(n):
+        fast = fast.next
+    if fast is None:
+        return
+    prev: ListNode = dummy
+    while fast and fast.next:
+        fast = fast.next
+        prev = prev.next
+    after: ListNode = prev.next
+    prev.next = after.next
+    after.next = None
     return dummy.next
 
 
