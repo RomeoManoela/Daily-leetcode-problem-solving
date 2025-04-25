@@ -364,7 +364,7 @@ def postorder_traversal(root: Optional[TreeNode]) -> list[int]:
     return res
 
 
-def majority_element(nums: list[int]) -> int:
+def majority_element(nums: list[int]) -> Any:
     # Algorithme de Boyer-Moore Voting
     candidate = None
     count = 0
@@ -378,10 +378,10 @@ def majority_element(nums: list[int]) -> int:
         else:
             count -= 1
 
-    return
+    return candidate
 
 
-def roman_to_int(self, s: str) -> Any | None:
+def roman_to_int(s: str) -> Any | None:
     if s == "":
         return None
 
@@ -397,7 +397,7 @@ def roman_to_int(self, s: str) -> Any | None:
     return res
 
 
-def transform_array(self, nums: List[int]) -> List[int]:
+def transform_array(nums: List[int]) -> List[int]:
     for i in range(len(nums)):
         nums[i] = nums[i] % 2
     zeros = nums.count(0)
