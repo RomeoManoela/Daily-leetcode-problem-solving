@@ -1,6 +1,6 @@
 import math
 from collections import deque
-from typing import Optional
+from typing import Optional, Any, List
 from math import factorial as fct
 
 
@@ -117,6 +117,8 @@ def str_str(haystack: str, needle: str) -> int | None:
         print(haystack[i : i + len(needle)], i)
         if haystack[i : i + len(needle)] == needle:
             return i
+        return None
+    return None
 
 
 # search insert position
@@ -376,7 +378,32 @@ def majority_element(nums: list[int]) -> int:
         else:
             count -= 1
 
-    return candidate
+    return
+
+
+def roman_to_int(self, s: str) -> Any | None:
+    if s == "":
+        return None
+
+    value: dict = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+    res = value[s[-1]]
+
+    for i in range(len(s) - 2, -1, -1):
+        if value[s[i]] < value[s[i + 1]]:
+            res -= value[s[i]]
+        else:
+            res += value[s[i]]
+    return res
+
+
+def transform_array(self, nums: List[int]) -> List[int]:
+    for i in range(len(nums)):
+        nums[i] = nums[i] % 2
+    zeros = nums.count(0)
+    for i in range(len(nums)):
+        nums[i] = 0 if i < zeros else 1
+    return nums
 
 
 def main():
