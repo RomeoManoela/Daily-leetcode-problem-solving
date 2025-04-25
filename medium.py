@@ -18,8 +18,7 @@ def generate_parenthesis(n: int) -> list[str]:
     return result
 
 
-def sort_list(self, head: Optional[ListNode]) -> Optional[ListNode]:
-
+def sort_list(head: Optional[ListNode]) -> Optional[ListNode]:
     if not head or not head.next:
         return head
 
@@ -31,13 +30,13 @@ def sort_list(self, head: Optional[ListNode]) -> Optional[ListNode]:
     mid = slow.next
     slow.next = None
 
-    left = self.sortList(head)
-    right = self.sortList(mid)
+    left = sort_list(head)
+    right = sort_list(mid)
 
-    return merge_ll(left, right)
+    return merge(left, right)
 
 
-def merge_ll(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+def merge(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
     dummy = ListNode(0)
     tail = dummy
 
@@ -60,7 +59,7 @@ def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode] 
     for i in range(n):
         fast = fast.next
     if fast is None:
-        return
+        return None
     prev: ListNode = dummy
     while fast and fast.next:
         fast = fast.next
@@ -71,9 +70,25 @@ def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode] 
     return dummy.next
 
 
-def main():
-    print(generate_parenthesis(3))
-    print(generate_parenthesis(1))
+def insertion_sort_list(head: Optional[ListNode]) -> Optional[ListNode]:
+    dummy = ListNode(0, head)
+    prev, curr = head, head.next
+    while curr:
+        if curr.val >= prev.val:
+            prev, curr = curr, curr.next
+            continue
+        tmp = dummy
+        while tmp.next.val < curr.val:
+            tmp = tmp.next
+
+        prev.next = curr.next
+        curr.next = tmp.next
+        tmp.next = curr
+        curr = prev.next
+    return dummy.next
+
+
+def main(): ...
 
 
 if __name__ == "__main__":
