@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from easy import ListNode
 
@@ -86,6 +86,18 @@ def insertion_sort_list(head: Optional[ListNode]) -> Optional[ListNode]:
         tmp.next = curr
         curr = prev.next
     return dummy.next
+
+def max_sub_array(nums: List[int]) -> int:
+    if len(nums) == 1:
+        return nums[0]
+    max_sum = nums[0]
+    max_using_element = [nums[0]]
+    for i in range(1, len(nums)):
+        num = nums[i]
+        current_max = max(num, num + max_using_element[i - 1])
+        max_using_element.append(current_max)
+        max_sum = max(current_max, max_sum)
+    return max_sum
 
 
 def main(): ...
