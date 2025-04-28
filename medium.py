@@ -87,6 +87,7 @@ def insertion_sort_list(head: Optional[ListNode]) -> Optional[ListNode]:
         curr = prev.next
     return dummy.next
 
+
 def max_sub_array(nums: List[int]) -> int:
     if len(nums) == 1:
         return nums[0]
@@ -98,6 +99,23 @@ def max_sub_array(nums: List[int]) -> int:
         max_using_element.append(current_max)
         max_sum = max(current_max, max_sum)
     return max_sum
+
+def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
+    res = []
+
+    def dfs(start: int, path: List[int], remaining: int):
+        if remaining == 0:
+            res.append(path[:])
+            return
+        if remaining < 0:
+            return
+        for i in range(start, len(candidates)):
+            path.append(candidates[i])
+            dfs(i, path, remaining - candidates[i])
+            path.pop()
+
+    dfs(0, [], target)
+    return res
 
 
 def main(): ...
