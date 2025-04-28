@@ -406,6 +406,16 @@ def transform_array(nums: List[int]) -> List[int]:
     return nums
 
 
+def get_intersection(h_a: ListNode, h_b: ListNode) -> Optional[ListNode]:
+    if not h_a or not h_a:
+        return None
+    a, b = h_a, h_a
+    while a is not b:
+        a = a.next if a else h_a
+        b = b.next if b else h_a
+    return a
+
+
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
 
