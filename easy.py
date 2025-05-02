@@ -437,6 +437,7 @@ def is_cousins(root: Optional[TreeNode], x: int, y: int) -> bool:
         return True
     return False
 
+
 def third_max(nums: List[int]) -> int:
     tmp_set = set(nums)
     res = max(tmp_set)
@@ -451,6 +452,21 @@ def third_max(nums: List[int]) -> int:
     if i == 3:
         return res
     return max(nums)
+
+
+def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
+    res = []
+    occ1 = {}
+    for n1 in nums1:
+        occ1[n1] = occ1.get(n1, 0) + 1
+    occ2 = {}
+    for n2 in nums2:
+        occ2[n2] = occ2.get(n2, 0) + 1
+    for key in occ1:
+        min_occ = min(occ1[key], occ2.get(key, 0))
+        new = [key for _ in range(min_occ)]
+        res += new
+    return res
 
 
 def main():
