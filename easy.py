@@ -416,7 +416,7 @@ def get_intersection(h_a: ListNode, h_b: ListNode) -> Optional[ListNode]:
     return a
 
 
-def is_cousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
+def is_cousins(root: Optional[TreeNode], x: int, y: int) -> bool:
     first = {}
     second = {}
 
