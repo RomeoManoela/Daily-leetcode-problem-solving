@@ -416,6 +416,28 @@ def get_intersection(h_a: ListNode, h_b: ListNode) -> Optional[ListNode]:
     return a
 
 
+def is_cousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
+    first = {}
+    second = {}
+
+    def dfs(node, parent, depth):
+        if not node:
+            return
+        if node.val == x:
+            first["parent"] = parent
+            first["depth"] = depth
+        if node.val == y:
+            second["parent"] = parent
+            second["depth"] = depth
+        dfs(node.left, node, depth + 1)
+        dfs(node.right, node, depth + 1)
+
+    dfs(root, None, 0)
+    if first["parent"] is not second["parent"] and first["depth"] == second["depth"]:
+        return True
+    return False
+
+
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
 
