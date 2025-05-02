@@ -469,6 +469,14 @@ def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
     return res
 
 
+def move_zeroes(nums: List[int]) -> None:
+    last_non_zero = 0
+    for i in range(len(nums)):
+        if nums[i] != 0:
+            nums[i], nums[last_non_zero] = nums[last_non_zero], nums[i]
+            last_non_zero += 1
+
+
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
 
