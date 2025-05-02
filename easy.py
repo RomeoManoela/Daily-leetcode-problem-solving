@@ -437,6 +437,21 @@ def is_cousins(root: Optional[TreeNode], x: int, y: int) -> bool:
         return True
     return False
 
+def third_max(nums: List[int]) -> int:
+    tmp_set = set(nums)
+    res = max(tmp_set)
+    tmp_set.remove(res)
+    i = 1
+    while i < 3:
+        if len(tmp_set) == 0:
+            break
+        res = max(tmp_set)
+        tmp_set.remove(res)
+        i += 1
+    if i == 3:
+        return res
+    return max(nums)
+
 
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
