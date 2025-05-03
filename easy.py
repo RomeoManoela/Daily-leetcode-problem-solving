@@ -477,6 +477,26 @@ def move_zeroes(nums: List[int]) -> None:
             last_non_zero += 1
 
 
+def get_minimum_difference(root: Optional[TreeNode]) -> float:
+    prev = None
+    min_diff = float('inf')
+
+    def in_order(node):
+        if not node:
+            return
+        nonlocal prev, min_diff
+        in_order(node.left)
+
+        if prev is not None:
+            min_diff = min(min_diff, abs(node.val - prev))
+        prev = node.val
+
+        in_order(node.right)
+
+    in_order(root)
+    return min_diff
+
+
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
 
