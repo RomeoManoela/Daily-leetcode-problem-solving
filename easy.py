@@ -479,7 +479,7 @@ def move_zeroes(nums: List[int]) -> None:
 
 def get_minimum_difference(root: Optional[TreeNode]) -> float:
     prev = None
-    min_diff = float('inf')
+    min_diff = float("inf")
 
     def in_order(node):
         if not node:
@@ -495,6 +495,23 @@ def get_minimum_difference(root: Optional[TreeNode]) -> float:
 
     in_order(root)
     return min_diff
+
+
+def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
+    res = 0
+
+    def post_order(node):
+        nonlocal res
+        if not node:
+            return 0
+        left = post_order(node.left)
+        right = post_order(node.right)
+
+        res = max(res, left + right)
+        return max(left, right) + 1
+
+    post_order(root)
+    return res
 
 
 def main():
