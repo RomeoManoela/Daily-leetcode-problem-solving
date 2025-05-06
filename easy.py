@@ -513,13 +513,15 @@ def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
     post_order(root)
     return res
 
-def build_array(self, nums: List[int]) -> List[int]:
+
+def build_array(nums: List[int]) -> List[int]:
     ans: list[int] = nums[:]
     for i in range(len(nums)):
         num = nums[i]
         ans[i] = nums[num]
 
     return ans
+
 
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
