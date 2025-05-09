@@ -522,6 +522,19 @@ def build_array(nums: List[int]) -> List[int]:
 
     return ans
 
+def find_target(root: Optional[TreeNode], k: int) -> bool:
+    seen = set()
+
+    def dfs(node):
+        if not node:
+            return False
+        if k - node.val in seen:
+            return True
+        seen.add(node.val)
+        return dfs(node.left) or dfs(node.right)
+
+    return dfs(root)
+
 
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
