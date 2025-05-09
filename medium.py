@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional
 
 from easy import ListNode
 
@@ -88,7 +88,7 @@ def insertion_sort_list(head: Optional[ListNode]) -> Optional[ListNode]:
     return dummy.next
 
 
-def max_sub_array(nums: List[int]) -> int:
+def max_sub_array(nums: list[int]) -> int:
     if len(nums) == 1:
         return nums[0]
     max_sum = nums[0]
@@ -100,10 +100,11 @@ def max_sub_array(nums: List[int]) -> int:
         max_sum = max(current_max, max_sum)
     return max_sum
 
-def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
+
+def combination_sum(candidates: list[int], target: int) -> list[list[int]]:
     res = []
 
-    def dfs(start: int, path: List[int], remaining: int):
+    def dfs(start: int, path: list[int], remaining: int):
         if remaining == 0:
             res.append(path[:])
             return
@@ -117,11 +118,15 @@ def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
     dfs(0, [], target)
     return res
 
+
 def num_tilings(n: int) -> int:
-    mod = 10 ** 9 + 7
-    if n == 0: return 1
-    if n == 1: return 1
-    if n == 2: return 2
+    mod = 10**9 + 7
+    if n == 0:
+        return 1
+    if n == 1:
+        return 1
+    if n == 2:
+        return 2
 
     dp = [0] * (n + 1)
     dp[0], dp[1], dp[2] = 1, 1, 2
@@ -131,6 +136,18 @@ def num_tilings(n: int) -> int:
 
     return dp[n]
 
+def min_operations(nums: list[int]) -> int:
+    min_op = 0
+    for i in range(len(nums)):
+        if nums[i] != 0:
+            continue
+        if i + 2 >= len(nums):
+            break
+        for j in range(i, i + 3):
+            num = nums[j]
+            nums[j] = 0 if num == 1 else 1
+        min_op += 1
+    return min_op if set(nums) == {1} else -1
 
 def main(): ...
 
