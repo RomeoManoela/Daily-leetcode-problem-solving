@@ -136,6 +136,7 @@ def num_tilings(n: int) -> int:
 
     return dp[n]
 
+
 def min_operations(nums: list[int]) -> int:
     min_op = 0
     for i in range(len(nums)):
@@ -148,6 +149,7 @@ def min_operations(nums: list[int]) -> int:
             nums[j] = 0 if num == 1 else 1
         min_op += 1
     return min_op if set(nums) == {1} else -1
+
 
 def main(): ...
 
