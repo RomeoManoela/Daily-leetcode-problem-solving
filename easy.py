@@ -522,6 +522,7 @@ def build_array(nums: List[int]) -> List[int]:
 
     return ans
 
+
 def find_target(root: Optional[TreeNode], k: int) -> bool:
     seen = set()
 
@@ -534,6 +535,23 @@ def find_target(root: Optional[TreeNode], k: int) -> bool:
         return dfs(node.left) or dfs(node.right)
 
     return dfs(root)
+
+def find_tilt(root: Optional[TreeNode]) -> int:
+    res: int = 0
+
+    def postorder(node):
+        nonlocal res
+        if not node:
+            return 0
+        left: int = postorder(node.left)
+        right: int = postorder(node.right)
+        node_val: int = node.val
+        node.val = abs(left - right)
+        res += node.val
+        return node_val + left + right
+
+    postorder(root)
+    return res
 
 
 def main():
