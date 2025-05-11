@@ -1,3 +1,4 @@
+import heapq
 import math
 from collections import deque
 from typing import Optional, Any, List
@@ -553,6 +554,25 @@ def find_tilt(root: Optional[TreeNode]) -> int:
 
     postorder(root)
     return res
+
+
+class KthLargest:
+
+    def __init__(self, k: int, nums: List[int]):
+        self.k = k
+        self.heap = nums
+        heapq.heapify(self.heap)
+
+        while len(self.heap) > k:
+            heapq.heappop(self.heap)
+
+    def add(self, val: int) -> int:
+        heapq.heappush(self.heap, val)
+
+        while len(self.heap) > self.k:
+            heapq.heappop(self.heap)
+
+        return self.heap[0]
 
 
 def main():
