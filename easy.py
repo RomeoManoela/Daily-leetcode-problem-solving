@@ -574,6 +574,19 @@ class KthLargest:
 
         return self.heap[0]
 
+# 206. Reverse Linked List
+def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
+    before = None
+    current = head
+    while current:
+        if current.next is None:
+            head = current
+        after = current.next
+        current.next = before
+        before = current
+        current = after
+    return head
+
 
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
