@@ -1,8 +1,6 @@
 import heapq
-import math
 from collections import deque
-from typing import Optional, Any, List
-from math import factorial as fct
+from typing import Optional, Any
 
 
 class ListNode:
@@ -398,7 +396,7 @@ def roman_to_int(s: str) -> Any | None:
     return res
 
 
-def transform_array(nums: List[int]) -> List[int]:
+def transform_array(nums: list[int]) -> list[int]:
     for i in range(len(nums)):
         nums[i] = nums[i] % 2
     zeros = nums.count(0)
@@ -408,12 +406,12 @@ def transform_array(nums: List[int]) -> List[int]:
 
 
 def get_intersection(h_a: ListNode, h_b: ListNode) -> Optional[ListNode]:
-    if not h_a or not h_a:
+    if not h_a or not h_b:
         return None
-    a, b = h_a, h_a
+    a, b = h_a, h_b
     while a is not b:
         a = a.next if a else h_a
-        b = b.next if b else h_a
+        b = b.next if b else h_b
     return a
 
 
@@ -439,7 +437,7 @@ def is_cousins(root: Optional[TreeNode], x: int, y: int) -> bool:
     return False
 
 
-def third_max(nums: List[int]) -> int:
+def third_max(nums: list[int]) -> int:
     tmp_set = set(nums)
     res = max(tmp_set)
     tmp_set.remove(res)
@@ -455,7 +453,7 @@ def third_max(nums: List[int]) -> int:
     return max(nums)
 
 
-def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
+def intersect(nums1: list[int], nums2: list[int]) -> list[int]:
     res = []
     occ1 = {}
     for n1 in nums1:
@@ -470,7 +468,7 @@ def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
     return res
 
 
-def move_zeroes(nums: List[int]) -> None:
+def move_zeroes(nums: list[int]) -> None:
     last_non_zero = 0
     for i in range(len(nums)):
         if nums[i] != 0:
@@ -515,7 +513,7 @@ def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
     return res
 
 
-def build_array(nums: List[int]) -> List[int]:
+def build_array(nums: list[int]) -> list[int]:
     ans: list[int] = nums[:]
     for i in range(len(nums)):
         num = nums[i]
@@ -558,7 +556,7 @@ def find_tilt(root: Optional[TreeNode]) -> int:
 
 class KthLargest:
 
-    def __init__(self, k: int, nums: List[int]):
+    def __init__(self, k: int, nums: list[int]):
         self.k = k
         self.heap = nums
         heapq.heapify(self.heap)
@@ -574,6 +572,7 @@ class KthLargest:
 
         return self.heap[0]
 
+
 # 206. Reverse Linked List
 def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
     before = None
@@ -586,6 +585,18 @@ def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
         before = current
         current = after
     return head
+
+
+# 1984. Minimum Difference Between Highest and Lowest of K Scores
+def minimum_difference(nums: list[int], k: int) -> int:
+    min_diff = float("inf")
+    nums.sort()
+    if len(nums) == 1:
+        return 0
+    for i in range(len(nums) - k + 1):
+        diff = nums[i + k - 1] - nums[i]
+        min_diff = min_diff if min_diff < diff else diff
+    return min_diff
 
 
 def main():
