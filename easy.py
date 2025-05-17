@@ -607,6 +607,24 @@ def are_occurrences_equal(s: str) -> bool:
     return len(set(occ.values())) == 1
 
 
+# 897. Increasing Order Search Tree
+def increasing_bst(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    dummy = TreeNode(0)
+    self.current = dummy
+
+    def inorder(node):
+        if not node:
+            return
+        inorder(node.left)
+        node.left = None
+        self.current.right = node
+        self.current = node
+        inorder(node.right)
+
+    inorder(root)
+    return dummy.right
+
+
 def main():
     pass
 
