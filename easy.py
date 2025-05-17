@@ -608,7 +608,7 @@ def are_occurrences_equal(s: str) -> bool:
 
 
 def main():
-    print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
+    pass
 
 
 if __name__ == "__main__":
