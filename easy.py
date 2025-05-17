@@ -599,6 +599,14 @@ def minimum_difference(nums: list[int], k: int) -> int:
     return min_diff
 
 
+# 1941. Check if All Characters Have Equal Number of Occurrences
+def are_occurrences_equal(s: str) -> bool:
+    occ = {}
+    for char in s:
+        occ[char] = occ.get(char, 0) + 1
+    return len(set(occ.values())) == 1
+
+
 def main():
     print(majority_element([1, 1, 3, 3, 3, 3, 3, 3, 4, 8, 9]))
 
