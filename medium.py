@@ -172,6 +172,7 @@ def find_farmland(land: list[list[int]]) -> list[list[int]]:
 
     return result
 
+
 def main(): ...
 
 
