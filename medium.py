@@ -151,6 +151,27 @@ def min_operations(nums: list[int]) -> int:
     return min_op if set(nums) == {1} else -1
 
 
+# 1992. Find All Groups of Farmland
+def find_farmland(land: list[list[int]]) -> list[list[int]]:
+    m, n = len(land), len(land[0])
+    result = []
+
+    for i in range(m):
+        for j in range(n):
+            if land[i][j] == 1:
+
+                row, col = i, j
+                while row + 1 < m and land[row + 1][j] == 1:
+                    row += 1
+                while col + 1 < n and land[i][col + 1] == 1:
+                    col += 1
+                for r in range(i, row + 1):
+                    for c in range(j, col + 1):
+                        land[r][c] = 0
+                result.append([i, j, row, col])
+
+    return result
+
 def main(): ...
 
 
