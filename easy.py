@@ -625,6 +625,33 @@ def increasing_bst(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
     return dummy.right
 
 
+# 3507. Minimum Pair Removal to Sort Array I
+def min_pair_removal(nums: list[int]) -> int:
+    res = 0
+    while not is_sorted(nums):
+        min_sum, first, second = float("inf"), 0, 0
+
+        for i in range(len(nums) - 1):
+            curr_sum = nums[i] + nums[i + 1]
+            if min_sum > curr_sum:
+                min_sum = curr_sum
+                first = i
+                second = i + 1
+
+        nums.pop(second)
+        nums[first] = min_sum
+        res += 1
+
+    return res
+
+
+def is_sorted(lst: list[int]):
+    for i in range(len(lst) - 1):
+        if lst[i] > lst[i + 1]:
+            return False
+    return True
+
+
 def main():
     pass
 
