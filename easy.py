@@ -652,6 +652,21 @@ def is_sorted(lst: list[int]):
     return True
 
 
+# 387. First Unique Character in a String
+def first_unique_char(s: str) -> int:
+    counter = {}
+    for char in s:
+        counter[char] = counter.get(char, 0) + 1
+    unique_strs = [char for char in counter.keys() if counter[char] == 1]
+    if not unique_strs:
+        return -1
+    for i in range(len(s)):
+        for unique in unique_strs:
+            if s[i] == unique:
+                return i
+    return -1
+
+
 def main():
     pass
 
