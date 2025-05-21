@@ -667,6 +667,29 @@ def first_unique_char(s: str) -> int:
     return -1
 
 
+# 1022. Sum of Root To Leaf Binary Numbers
+def sum_root_to_leaf(root: Optional[TreeNode]) -> int:
+    res = 0
+
+    def backtrack(path, node):
+        nonlocal res
+        if not node.left and not node.right:
+            for i in range(len(path)):
+                res += path[i] * (2 ** (len(path) - i - 1))
+            return
+        if node.left:
+            path.append(node.left.val)
+            backtrack(path, node.left)
+            path.pop()
+        if node.right:
+            path.append(node.right.val)
+            backtrack(path, node.right)
+            path.pop()
+
+    backtrack([root.val], root)
+    return res
+
+
 def main():
     pass
 
