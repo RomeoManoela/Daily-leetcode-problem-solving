@@ -700,6 +700,25 @@ def count_k_difference(nums: list[int], k: int) -> int:
     return res
 
 
+# 1995. Count Special Quadruplets
+def count_quadruplets(nums: list[int]) -> int:
+    res: int = 0
+
+    def backtrack(lst, start):
+        nonlocal res
+        if len(lst) == 4:
+            if lst[3] == lst[0] + lst[1] + lst[2]:
+                res += 1
+            return
+        for i in range(start, len(nums)):
+            lst.append(nums[i])
+            backtrack(lst, i + 1)
+            lst.pop()
+
+    backtrack([], 0)
+    return res
+
+
 def main():
     pass
 
