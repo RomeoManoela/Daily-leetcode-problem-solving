@@ -690,6 +690,16 @@ def sum_root_to_leaf(root: Optional[TreeNode]) -> int:
     return res
 
 
+# 2006. Count the Number of Pairs With Absolute Difference K
+def count_k_difference(nums: list[int], k: int) -> int:
+    res: int = 0
+    for i in range(len(nums)):
+        for j in range(i, len(nums)):
+            if abs(nums[i] - nums[j]) == k:
+                res += 1
+    return res
+
+
 def main():
     pass
 
